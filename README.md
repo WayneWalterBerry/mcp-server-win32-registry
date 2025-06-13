@@ -1,5 +1,27 @@
-# mcp-server-win32-registry
-Locally Hosted MCP Server For the Windows Registry
+## 🎯 Overview
+
+### ✨ What is the mcp-server-win32-registry server?
+
+The mcp-server-win32-registry servier is a local running service that enables MCP hosts like GitHub Copilot and Cursor to search and retrieve registry information from the local machine. By implementing the standardized Model Context Protocol (MCP), this service allows any compatible AI system to read the Window registry
+
+**Example JSON configuration:**
+```json
+{
+    "mcp_server_win32_registry_server": {
+      "type": "stdio",
+      "command": "D:\\mcp-server-win32-registry\\artifacts\\Debug\\mcp-server-win32-registry-server.exe",
+      "args": []
+    }
+}
+```
+
+### ▶️ Getting Started
+1. Open GitHub Copilot in VS Code and [switch to Agent mode](https://code.visualstudio.com/docs/copilot/chat/chat-agent-mode)
+2. You should see the mcp-server-win32-registry server in the list of tools
+3. Try a prompt that tells the agent to use the cp-server-win32-registry server, such as "What is the shell namespace extension installed to handle the .zip file extesnion?"
+4. The agent will query the registry via  mcp-server-win32-registry server to answer your question
+
+   
 
 ## Using 
 https://github.com/modelcontextprotocol
