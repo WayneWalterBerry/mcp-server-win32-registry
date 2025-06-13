@@ -18,7 +18,7 @@ The mcp-server-win32-registry servier is a local running service that enables MC
 ### ▶️ Getting Started
 
 1. Download the latest release and unzip the directory into a folder on your local machine.
-2. Modify (Or Add) the .mcp.json file in your solution root to include the json above, for an example see: [.mcp.json](.mcs.json)
+2. Modify (Or Add) the .mcp.json file in your solution root to include the json above, for an example see: [.mcp.json](.mcp.json)
 3. Open GitHub Copilot in VS Code and [switch to Agent mode](https://code.visualstudio.com/docs/copilot/chat/chat-agent-mode)
 4. You should see the mcp-server-win32-registry server in the list of tools
 5. Try a prompt that tells the agent to use the cp-server-win32-registry server, such as "What is the shell namespace extension installed to handle the .zip file extesnion?"
