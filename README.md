@@ -24,11 +24,20 @@ The mcp-server-win32-registry servier is a local running service that enables MC
 5. Try a prompt that tells the agent to use the cp-server-win32-registry server, such as "What is the shell namespace extension installed to handle the .zip file extesnion?"
 6. The agent will query the registry via  mcp-server-win32-registry server to answer your question
 
+1. ## Latest
+- [v.0.09-alpa](https://github.com/WayneWalterBerry/mcp-server-win32-registry/releases/tag/v0.0.9-alpha)
+
 ### ❓ Example Prompts
 
-Prompt: What is the shell namespace extension installed to handle the .zip file extesnion?  
+Prompt: "What is the shell namespace extension installed to handle the .zip file extension?"  
 
-![Answer To Prompt](docs/images/prompt-zip-shell-extension.png)
+> ![Answer To Prompt](docs/images/prompt-zip-shell-extension.png)
+
+Prompt: "What are the values in: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Network"  
+
+> ![Answer To Prompt](docs/images/prompt-registry-permissions.png)
+
+
 
 ## Using 
 https://github.com/modelcontextprotocol

@@ -256,6 +256,52 @@ namespace mcp_server_win32_registry_server
             }
         }
 
+        /// <summary>
+        /// Gets the access permissions (ACL) for a registry key and returns them as serialized JSON.
+        /// </summary>
+        /// <param name="keyPath">The full path to the registry key (e.g. "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft").</param>
+        /// <returns>A JSON string containing the access rules, or an error message.</returns>
+        [McpServerTool, Description("Get the permissions (ACL) for a registry key")]
+        public static string GetRegistryKeyPermissions(string keyPath)
+        {
+            Log.Information($"Getting permissions for registry key: '{keyPath}'");
+            try
+            {
+                var rootKey = GetRootKeyFromPath(keyPath, out string subKeyPath);
+                if (rootKey == null)
+                {
+                    return JsonSerializer.Serialize(new { error = $"Invalid registry key path '{keyPath}'" });
+                }
+
+                using (var key = rootKey.OpenSubKey(subKeyPath, false))
+                {
+                    if (key == null)
+                    {
+                        return JsonSerializer.Serialize(new { error = $"Registry key '{keyPath}' not found" });
+                    }
+
+                    var security = key.GetAccessControl();
+                    var rules = security.GetAccessRules(true, true, typeof(System.Security.Principal.NTAccount));
+                    var aclList = new List<object>();
+                    foreach (System.Security.AccessControl.RegistryAccessRule rule in rules)
+                    {
+                        aclList.Add(new {
+                            Identity = rule.IdentityReference.Value,
+                            Rights = rule.RegistryRights.ToString(),
+                            AccessControlType = rule.AccessControlType.ToString(),
+                            IsInherited = rule.IsInherited
+                        });
+                    }
+                    return JsonSerializer.Serialize(aclList);
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "Error getting registry key permissions");
+                return JsonSerializer.Serialize(new { error = ex.Message });
+            }
+        }
+
         #region Private Helper Methods
 
         /// <summary>
