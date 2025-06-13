@@ -26,7 +26,7 @@ namespace mcp_server_win32_registry_server
         /// <param name="valueName">The name of the value to read.</param>
         /// <returns>A JSON serialized string representing the registry value, or an error message.</returns>
         [McpServerTool, Description("Get a registry value")]
-        public string GetValue(string keyPath, string valueName)
+        public static string GetValue(string keyPath, string valueName)
         {
             Log.Information($"Getting registry value: KeyPath='{keyPath}', ValueName='{valueName}'");
 
@@ -75,7 +75,7 @@ namespace mcp_server_win32_registry_server
         /// <param name="keyPath">The full path to the registry key (e.g. "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft").</param>
         /// <returns>A JSON string containing the list of subkeys, or an error message.</returns>
         [McpServerTool, Description("Get a list of all subkeys under a registry key")]
-        public string GetSubKeys(string keyPath)
+        public static string GetSubKeys(string keyPath)
         {
             Log.Information($"Getting subkeys for registry path: '{keyPath}'");
 
@@ -111,7 +111,7 @@ namespace mcp_server_win32_registry_server
         /// <param name="keyPath">The full path to the registry key (e.g. "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows").</param>
         /// <returns>A JSON string containing the key-value pairs, or an error message.</returns>
         [McpServerTool, Description("Get all values under a registry key")]
-        public string GetValues(string keyPath)
+        public static string GetValues(string keyPath)
         {
             Log.Information($"Getting values for registry path: '{keyPath}'");
 
@@ -157,7 +157,7 @@ namespace mcp_server_win32_registry_server
         /// <param name="maxDepth">Maximum depth to search (1-5), defaults to 2.</param>
         /// <returns>A JSON string containing the matching key paths, or an error message.</returns>
         [McpServerTool, Description("Search for registry keys matching a pattern")]
-        public string FindKeys(string rootKeyPath, string searchPattern, int maxDepth = 2)
+        public static string FindKeys(string rootKeyPath, string searchPattern, int maxDepth = 2)
         {
             Log.Information($"Searching for registry keys: Root='{rootKeyPath}', Pattern='{searchPattern}', MaxDepth={maxDepth}");
 
@@ -192,7 +192,7 @@ namespace mcp_server_win32_registry_server
         /// <param name="maxDepth">Maximum depth to search (1-3), defaults to 2.</param>
         /// <returns>A JSON string containing the matching values with their paths, or an error message.</returns>
         [McpServerTool, Description("Search for registry values matching a pattern")]
-        public string FindValues(string rootKeyPath, string searchPattern, int maxDepth = 2)
+        public static string FindValues(string rootKeyPath, string searchPattern, int maxDepth = 2)
         {
             Log.Information($"Searching for registry values: Root='{rootKeyPath}', Pattern='{searchPattern}', MaxDepth={maxDepth}");
 
@@ -226,7 +226,7 @@ namespace mcp_server_win32_registry_server
         /// <param name="valueName">The name of the value.</param>
         /// <returns>A string representing the registry value type, or an error message.</returns>
         [McpServerTool, Description("Get the type of a registry value")]
-        public string GetValueType(string keyPath, string valueName)
+        public static string GetValueType(string keyPath, string valueName)
         {
             Log.Information($"Getting value type: KeyPath='{keyPath}', ValueName='{valueName}'");
 
@@ -264,7 +264,7 @@ namespace mcp_server_win32_registry_server
         /// <param name="fullKeyPath">The full registry key path.</param>
         /// <param name="subKeyPath">Output parameter for the subkey portion of the path.</param>
         /// <returns>The root RegistryKey object, or null if invalid.</returns>
-        private RegistryKey GetRootKeyFromPath(string fullKeyPath, out string subKeyPath)
+        private static RegistryKey GetRootKeyFromPath(string fullKeyPath, out string subKeyPath)
         {
             subKeyPath = string.Empty;
 
@@ -317,7 +317,7 @@ namespace mcp_server_win32_registry_server
         /// <summary>
         /// Recursively searches registry keys matching the search pattern.
         /// </summary>
-        private void SearchKeys(RegistryKey rootKey, string currentPath, string searchPattern, List<string> results, int maxDepth, int currentDepth)
+        private static void SearchKeys(RegistryKey rootKey, string currentPath, string searchPattern, List<string> results, int maxDepth, int currentDepth)
         {
             if (currentDepth > maxDepth)
             {
@@ -363,7 +363,7 @@ namespace mcp_server_win32_registry_server
         /// <summary>
         /// Recursively searches registry values matching the search pattern.
         /// </summary>
-        private void SearchValues(RegistryKey rootKey, string currentPath, string searchPattern, Dictionary<string, string> results, int maxDepth, int currentDepth)
+        private static void SearchValues(RegistryKey rootKey, string currentPath, string searchPattern, Dictionary<string, string> results, int maxDepth, int currentDepth)
         {
             if (currentDepth > maxDepth)
             {
@@ -430,7 +430,7 @@ namespace mcp_server_win32_registry_server
         /// </summary>
         /// <param name="key">The registry key to get the name for.</param>
         /// <returns>The string name of the root key.</returns>
-        private string GetRootKeyName(RegistryKey key)
+        private static string GetRootKeyName(RegistryKey key)
         {
             if (key == Registry.ClassesRoot) return "HKEY_CLASSES_ROOT";
             if (key == Registry.CurrentUser) return "HKEY_CURRENT_USER";

@@ -2,7 +2,7 @@
   "servers": {
     "mcp_server_win32_registry_server": {
       "type": "stdio",
-      "command": "D:\\mcp-server-win32-registry\\src\\mcp-server-win32-registry-server\\bin\\Debug\\mcp-server-win32-registry-server.exe",
+      "command": "D:\\mcp-server-win32-registry\\artifacts\\Debug\\mcp-server-win32-registry-server.exe",
       "args": []
     }
   }

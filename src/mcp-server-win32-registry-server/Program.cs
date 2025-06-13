@@ -14,12 +14,9 @@ namespace mcp_server_win32_registry_server
     {
         static void Main(string[] args)
         {
-            // Debugging aid: Uncomment to launch debugger when this method is called
-            System.Diagnostics.Debugger.Launch();
-
             Log.Logger = new LoggerConfiguration()
                        .MinimumLevel.Verbose() // Capture all log levels
-                       .WriteTo.File(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "logs", "TestServer_.log"),
+                       .WriteTo.File(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "logs", "mcp-server-win32-registry-server.log"),
                            rollingInterval: RollingInterval.Day,
                            outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:lj}{NewLine}{Exception}")
                        .WriteTo.Debug()
