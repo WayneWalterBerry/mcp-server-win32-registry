@@ -16,13 +16,16 @@ The mcp-server-win32-registry servier is a local running service that enables MC
 ```
 
 ### ▶️ Getting Started
+
 1. Open GitHub Copilot in VS Code and [switch to Agent mode](https://code.visualstudio.com/docs/copilot/chat/chat-agent-mode)
 2. You should see the mcp-server-win32-registry server in the list of tools
 3. Try a prompt that tells the agent to use the cp-server-win32-registry server, such as "What is the shell namespace extension installed to handle the .zip file extesnion?"
 4. The agent will query the registry via  mcp-server-win32-registry server to answer your question
 
-###❓Example Prompts
+### ❓ Example Prompts
+
 Prompt: What is the shell namespace extension installed to handle the .zip file extesnion?  
+
 ![Answer To Prompt](docs/images/prompt-zip-shell-extension.png)
 
 ## Using 
