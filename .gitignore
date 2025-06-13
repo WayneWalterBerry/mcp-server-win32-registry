@@ -6,6 +6,7 @@ x86/
 ARM/
 ARM64/
 packages/
+artifacts/
 
 *.vcxproj.filters
 *.vcxproj.user
