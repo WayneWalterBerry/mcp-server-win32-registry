@@ -33,11 +33,11 @@ Prompt: "What is the shell namespace extension installed to handle the .zip file
 
 > ![Answer To Prompt](docs/images/prompt-zip-shell-extension.png)
 
+---
+
 Prompt: "What are the values in: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Network"  
 
 > ![Answer To Prompt](docs/images/prompt-registry-permissions.png)
-
-
 
 ## Using 
 https://github.com/modelcontextprotocol
